@@ -8,5 +8,8 @@ const serverModel = require('./schemas/server');
 module.exports = {
   'Area': { ...areaModel },
   'Zone': { ...zoneModel },
-  
-}
+  'Standard': { ...standardModel },
+  'Company': { ...companyModel },
+  'Site': { ...siteModel },
+  'Server': { ...serverModel },
+};

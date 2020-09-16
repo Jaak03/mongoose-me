@@ -19,5 +19,10 @@
   "bugs": {
     "url": "https://github.com/Jaak03/mongoose-me/issues"
   },
-  "homepage": "https://github.com/Jaak03/mongoose-me#readme"
+  "homepage": "https://github.com/Jaak03/mongoose-me#readme",
+  "dependencies": {
+    "debug": "4.1.1",
+    "dotenv": "8.2.0",
+    "mongoose": "5.10.5"
+  }
 }
