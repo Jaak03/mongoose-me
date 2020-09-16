@@ -1,7 +1,23 @@
 require('dotenv').config('.env/local');
 require('./DEBUG');
 
-const models = require('./src/models');
+
 const log = require('debug')('index');
 
-log(models);
+const getClient = require('./src/functions/getClient');
+const { dbAction } = require('./src/functions/mongoDivider');
+
+let mongoClient;
+(async () => {
+  mongoClient = await getClient(mongoClient);
+  const res = dbAction(
+    'Area',
+    {
+      'find': '*'
+    },
+    client
+  );
+
+  log(res);
+})();
+
