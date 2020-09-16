@@ -1,0 +1,23 @@
+{
+  "name": "mongoose-me",
+  "version": "0.0.1",
+  "description": "A mongoose wrapper function that allows you to use mongoose as an API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jaak03/mongoose-me.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mongo"
+  ],
+  "author": "jaak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jaak03/mongoose-me/issues"
+  },
+  "homepage": "https://github.com/Jaak03/mongoose-me#readme"
+}

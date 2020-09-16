@@ -1,0 +1,11 @@
+version: '3.3'
+
+services:
+  mongo:
+    image: mongo
+    restart: on-failure
+    command: mongod --storageEngine=wiredTiger
+    volumes:
+      - ../.docker/worksafe_lambda_docker/mongo-db:/data/db
+    ports:
+      - 27050:27017
