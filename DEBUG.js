@@ -1,5 +1,9 @@
 const DEBUG = [
+  'index',
 
+  'connections:*',
+
+  'functions:*',
 ].join(',');
 
 process.env = {
