@@ -1,6 +1,10 @@
-require('dotenv').config('.env/local');
-require('./DEBUG');
+const { resolve } = require('path');
 
+(require('dotenv'))
+  .config({
+    path: resolve(__dirname, '.env/local')
+  });
+require('./DEBUG');
 
 const log = require('debug')('index');
 
@@ -10,13 +14,13 @@ const { dbAction } = require('./src/functions/mongoDivider');
 let mongoClient;
 (async () => {
   mongoClient = await getClient(mongoClient);
-  const res = dbAction(
-    'Area',
+  const res = (await dbAction(
+    'Tag',
     {
-      'find': '*'
+      'find': [{}],
     },
-    client
-  );
+    mongoClient,
+  )).flat();
 
   log(res);
 })();
