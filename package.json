@@ -1,6 +1,6 @@
 {
   "name": "mongoose-me",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A mongoose wrapper function that allows you to use mongoose as an API.",
   "main": "index.js",
   "scripts": {
