@@ -9,70 +9,73 @@ require('./DEBUG');
 const log = require('debug')('index');
 
 const getClient = require('./src/functions/getClient');
-const { dbAction } = require('./src/functions/mongoDivider');
+const { processCommands } = require('./src/functions/callMongo');
 
 let mongoClient;
 (async () => {
   mongoClient = await getClient(mongoClient);
-  const res = (await dbAction(
-    'Tag',
+  const res = (await processCommands({
+    schema: 'Tag',
+    commands: [
 
-    // BASIC FIND
-    {
-      'find': [{
-        name: null
-      }],
-    },
+      // BASIC FIND
+      // {
+      //   command: 'find',
+      //   arguments: [{}]
+      // }
 
-    // MORE COMPLEX STATEMENTS
-    // {
-    //   'findOneAndUpdate': [
-    //     { name: null },
-    //     {
-    //       $set: {
-    //         name: 'no-name-tag',
-    //       }
-    //     },
-    //     {
-    //       many: true,
-    //     }
-    //   ]
-    // },
+      // MORE COMPLEX STATEMENTS
+      // {
+      //   command: 'findOneAndUpdate',
+      //   arguments: [
+      //     { name: null },
+      //     {
+      //       $set: {
+      //         name: 'no-name-tag',
+      //       }
+      //     },
+      //     {
+      //       many: true,
+      //     }
+      //   ]
+      // },
 
-    // {
-    //   'updateMany': [
-    //     { name: null },
-    //     {
-    //       $set: {
-    //         name: 'no-name-tag',
-    //       }
-    //     },
-    //     {
-    //       runValidators: true,
-    //     },
-    //   ]
-    // },
+      // {
+      //   command: 'updateMany',
+      //   arguments: [
+      //     { name: null },
+      //     {
+      //       $set: {
+      //         name: 'no-name-tag',
+      //       }
+      //     },
+      //     {
+      //       runValidators: true,
+      //     },
+      //   ]
+      // },
 
-    // AND AGGREGATION, CHECK OUT THE DOUBLE []
-    // {
-    //   'aggregate': [[
-    //     {
-    //       $match: {},
-    //     },
-    //     {
-    //       $group: {
-    //         _id: '$name',
-    //       },
-    //     },
-    //     {
-    //       $project: {
-    //         _id: 0,
-    //         name: '$_id',
-    //       },
-    //     },
-    //   ]],
-    // },
-
+      // AND AGGREGATION, CHECK OUT THE DOUBLE []
+      {
+        command: 'aggregate',
+        arguments: [[
+          {
+            $match: {},
+          },
+          {
+            $group: {
+              _id: '$name',
+            },
+          },
+          {
+            $project: {
+              _id: 0,
+              name: '$_id',
+            },
+          },
+        ]],
+      },
+    ]},
     mongoClient,
   )).flat();
 
